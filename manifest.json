@@ -1,0 +1,18 @@
+{
+   "manifest_version": 2,
+
+   "name": "HTML Attribute Value Finder",
+   "description": "This extension finds the value of an attribute of an HTML element on the page.",
+   "version": "1.0",
+
+   "browser_action": {
+      "default_icon": "icon.png"
+   },
+   "permissions": [
+      "activeTab",
+      "storage"
+   ],
+   "background" : {
+    "scripts" : ["jquery-3.2.1.min.js","background.js"]
+  }
+}
