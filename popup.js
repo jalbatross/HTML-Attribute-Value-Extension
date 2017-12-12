@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
    search.value = "problemid";
 
-   chrome.tabs.executeScript(null, {file: "jquery-3.2.1.min.js"}, function() {
+   chrome.tabs.executeScript(null, {file: "/lib/jquery-3.2.1.min.js"}, function() {
        chrome.tabs.executeScript({file: "execute.js"} , function () {
          chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
             var tabId = tabs[0].id;
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
    });
 
    search.addEventListener('input', () => {
-   chrome.tabs.executeScript(null, {file: "jquery-3.2.1.min.js"}, function() {
+   chrome.tabs.executeScript(null, {file: "/lib/jquery-3.2.1.min.js"}, function() {
        chrome.tabs.executeScript({file: "execute.js"} , function () {
          chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
             var tabId = tabs[0].id;

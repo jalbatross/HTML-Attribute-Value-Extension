@@ -1,11 +1,9 @@
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
-   console.log("Execution script received message: ", message);
 
    var scriptOptions = message.scriptOptions;
-   console.log('searching for attribute ', scriptOptions.param1);
 
    if (!message || !scriptOptions.param1) {
-      return "";
+      sendResponse("Invalid attribute");
    }
 
    var attribute = scriptOptions.param1;

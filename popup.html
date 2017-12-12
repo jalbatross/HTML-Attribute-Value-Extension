@@ -31,12 +31,16 @@
       - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
     -->
     <script src="popup.js"></script>
+    <script src="/lib/bootstrap.min.js"></script>
+    <link href="lib/bootstrap.min.css" rel="stylesheet" />
+    <link href="lib/bootstrap-theme.min.css" rel="stylesheet" />
   </head>
 
   <body>
-      <p id= "title">Attribute Searcher</p>  
+      <h2 id= "title">Attribute Searcher</h2>  
       <input type="text" id="search"></input>
-      <h1 id="result">No Results</h1> 
+      <button type="button" class="btn">Make Default</button>
+      <p id="result">No Results</p> 
               
     
   </body>
