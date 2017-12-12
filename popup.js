@@ -1,3 +1,4 @@
+/*
 chrome.browserAction.onClicked.addListener(function(tab) {
    chrome.tabs.executeScript(null, {
       file: "jquery-3.2.1.min.js"
@@ -6,7 +7,9 @@ chrome.browserAction.onClicked.addListener(function(tab) {
          file: "execute.js"
       });
    });
-});
+});*/
+
+
 
 /** 
  * Search the current page for an HTML element that has an attribute.
@@ -25,3 +28,56 @@ function findHtmlAttribute(attribute) {
 	});
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+
+   search.value = "problemid";
+
+   chrome.tabs.executeScript(null, {file: "jquery-3.2.1.min.js"}, function() {
+       chrome.tabs.executeScript({file: "execute.js"} , function () {
+         chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+            var tabId = tabs[0].id;
+            chrome.tabs.sendMessage(tabId, {scriptOptions: {param1: search.value}}, function(response) {
+               result.innerHTML = response;
+            });
+         });
+      });
+   });
+
+   search.addEventListener('input', () => {
+   chrome.tabs.executeScript(null, {file: "jquery-3.2.1.min.js"}, function() {
+       chrome.tabs.executeScript({file: "execute.js"} , function () {
+         chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+            var tabId = tabs[0].id;
+            chrome.tabs.sendMessage(tabId, {scriptOptions: {param1: search.value}}, function(response) {
+               result.innerHTML = response;
+            });
+         });
+      });
+   });
+
+});
+
+
+
+
+   /*
+  getCurrentTabUrl((url) => {
+    var dropdown = document.getElementById('dropdown');
+
+    // Load the saved background color for this page and modify the dropdown
+    // value, if needed.
+    getSavedBackgroundColor(url, (savedColor) => {
+      if (savedColor) {
+        changeBackgroundColor(savedColor);
+        dropdown.value = savedColor;
+      }
+    });
+
+    // Ensure the background color is changed and saved when the dropdown
+    // selection changes.
+    dropdown.addEventListener('change', () => {
+      changeBackgroundColor(dropdown.value);
+      saveBackgroundColor(url, dropdown.value);
+    });
+  });*/
+});
