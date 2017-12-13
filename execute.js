@@ -4,6 +4,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 
    if (!message || !scriptOptions.param1) {
       sendResponse("Invalid attribute");
+      return;
    }
 
    var attribute = scriptOptions.param1;
