@@ -50,10 +50,18 @@ document.addEventListener('DOMContentLoaded', () => {
       });
    });
 
+   search.addEventListener('keydown', (e) => {
+    if (e.keyCode === 13) {
+      chrome.storage.sync.set({'default': search.value});
+      defaultVal.innerHTML = "Default query: "+ search.value
+    }
+   });
+
    defaultQuery.addEventListener('click', () => {
     chrome.storage.sync.set({'default': search.value});
     defaultVal.innerHTML = "Default query: "+ search.value
    });
+
 
 
 
