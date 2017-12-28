@@ -8,12 +8,18 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
    }
 
    var attribute = scriptOptions.param1;
-   var data = $("div[" + attribute + "]").attr(attribute);
+   var data = $("[" + attribute + "]").attr(attribute);
 
    if (data) {
-      sendResponse(data);
-   } else {
-      sendResponse("Could not find any attribute with id " + attribute)
+
+   	var count = (data.match(/ /g)||[]).length + 1;
+   	var formatted = "<b>Found " + String(count) + " instance(s) of " + attribute + ":</b><br>" + data.replace( / /g, "<br>");
+   	console.log(formatted);
+
+   	sendResponse(formatted);
+   } 
+   else {
+   	sendResponse("Could not find any attribute named " + attribute)
    }
 
 });

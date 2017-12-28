@@ -31,7 +31,9 @@
       - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
     -->
     <script src="popup.js"></script>
+    <script src="lib/jquery-3.2.1.min.js"></script>
     <script src="lib/bootstrap.min.js"></script>
+    <script src="lib/typeahead.bundle.min.js"></script>
     <link href="lib/bootstrap.min.css" rel="stylesheet" />
     <link href="lib/bootstrap-theme.min.css" rel="stylesheet" />
   </head>
@@ -39,9 +41,12 @@
   <body>
       <h2 id= "title">Attribute Searcher</h2>
       <p id="defaultVal" style="color:green"> Default query</p>
-      <input type="text" id="search"></input>
-      <button type="button" class="btn btn-info" id="defaultQuery">Make Default</button>
       <p id="result">No Results</p> 
+      <div id="attri-search">
+      <input type="text" id="search" class="typeahead" style="z-index: 1"></input>
+      <button type="button" class="btn btn-info" id="defaultQuery">Make Default</button>
+      
+</div>
 
   </body>
 </html>
